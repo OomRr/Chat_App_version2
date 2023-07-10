@@ -1,6 +1,5 @@
+import 'package:chat_app_version_one/pages/Cubits/AuthCubit/auth_cubit.dart';
 import 'package:chat_app_version_one/pages/Cubits/ChatCubit/chat_cubit.dart';
-import 'package:chat_app_version_one/pages/Cubits/LoginCubit/login_cubit.dart';
-import 'package:chat_app_version_one/pages/Cubits/RegisterCubit/register_cubit.dart';
 import 'package:chat_app_version_one/pages/chat_page.dart';
 import 'package:chat_app_version_one/pages/login_page.dart';
 import 'package:chat_app_version_one/pages/register_page.dart';
@@ -25,8 +24,7 @@ class ScholarChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context)=>LoginCubit()),
-        BlocProvider(create: (context)=>RegisterCubit()),
+        BlocProvider(create: (context)=>AuthCubit()),
         BlocProvider(create: (context)=>ChatCubit()),
 
       ],
