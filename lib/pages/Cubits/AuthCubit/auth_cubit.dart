@@ -6,7 +6,8 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
-  Future<void> registerUser({required email,required password}) async {
+  Future<void> registerUser({required email,required password})
+  async {
     emit(RegisterLoading());
     try {
       var auth = FirebaseAuth.instance;

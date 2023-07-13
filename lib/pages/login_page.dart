@@ -1,3 +1,4 @@
+import 'package:chat_app_version_one/pages/%20Blocs/auth_bloc/auth_bloc.dart';
 import 'package:chat_app_version_one/pages/Cubits/ChatCubit/chat_cubit.dart';
 import 'package:chat_app_version_one/pages/chat_page.dart';
 import 'package:chat_app_version_one/pages/register_page.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../constants.dart';
 import '../helper/snackbar.dart';
-import 'Cubits/AuthCubit/auth_cubit.dart';
 class LonginPage extends StatelessWidget {
   String? email, password;
   static String id = 'LoginPage';
@@ -19,7 +19,7 @@ class LonginPage extends StatelessWidget {
   LonginPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocListener<AuthCubit,AuthState >(
+    return BlocListener<AuthBloc,AuthState >(
       listener: (context, state) {
 
         if(state is LoginLoading)
@@ -88,7 +88,7 @@ class LonginPage extends StatelessWidget {
                     CustomButton(text: 'Sign in',
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
-                          BlocProvider.of<AuthCubit>(context).loginUser(email: email!, password: password!);
+                          BlocProvider.of<AuthBloc>(context).add(LoginEvent(email: email!, password: password!));
                         }
                       },
                     ),
